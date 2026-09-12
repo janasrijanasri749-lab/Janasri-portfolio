@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Janasri S — AI & Data Science Graduate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#f6f1e6;
+    --panel:#efe7d6;
+    --panel-2:#e6dcc6;
+    --line:#d8caa9;
+    --text:#22201a;
+    --muted:#6e6753;
+    --accent:#3d2fe0;
+    --accent-2:#a13d1f;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk',sans-serif;
+    margin:0;
+  }
+  a{color:inherit;}
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+  @media(max-width:640px){ .wrap{padding:0 20px;} }
+
+  /* HERO */
+  header.hero{
+    padding:88px 0 64px;
+    border-bottom:1px solid var(--line);
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;
+    top:-120px; right:-120px;
+    width:420px; height:420px;
+    background:radial-gradient(circle, rgba(61,47,224,0.10), transparent 70%);
+    pointer-events:none;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.5fr 1fr;
+    gap:48px;
+    align-items:end;
+    position:relative;
+  }
+  @media(max-width:800px){ .hero-grid{grid-template-columns:1fr; gap:32px;} }
+  .kicker{
+    font-size:0.95rem;
+    color:var(--accent);
+    font-weight:600;
+    margin-bottom:18px;
+  }
+  .name{
+    font-size:clamp(2.6rem, 6vw, 4.6rem);
+    font-weight:700;
+    letter-spacing:-0.02em;
+    line-height:1.02;
+  }
+  .role{
+    font-size:clamp(1.1rem, 2.4vw, 1.5rem);
+    color:var(--muted);
+    font-weight:500;
+    margin-top:14px;
+  }
+  .hero-side{
+    border-left:1px solid var(--line);
+    padding-left:32px;
+  }
+  @media(max-width:800px){ .hero-side{border-left:none; border-top:1px solid var(--line); padding-left:0; padding-top:24px;} }
+  .hero-side p{
+    color:var(--muted);
+    font-size:0.98rem;
+    margin:0 0 18px;
+  }
+  .contact-list{
+    list-style:none;
+    padding:0;
+    margin:0;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    font-size:0.95rem;
+  }
+  .contact-list a{
+    text-decoration:none;
+    border-bottom:1px solid transparent;
+    transition:border-color .15s ease, color .15s ease;
+  }
+  .contact-list a:hover{
+    color:var(--accent);
+    border-bottom-color:var(--accent);
+  }
+
+  /* SECTION SCAFFOLDING */
+  section{
+    padding:64px 0;
+    border-bottom:1px solid var(--line);
+  }
+  section:last-of-type{border-bottom:none;}
+  .section-head{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:32px;
+    margin-bottom:36px;
+  }
+  @media(max-width:700px){ .section-head{grid-template-columns:1fr; gap:8px;} }
+  .section-head h2{
+    font-size:1.5rem;
+    font-weight:600;
+  }
+  .section-lede{
+    color:var(--muted);
+    max-width:56ch;
+  }
+  .content-grid{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:32px;
+  }
+  @media(max-width:700px){ .content-grid{grid-template-columns:1fr;} }
+
+  /* ABOUT */
+  .about-body p{
+    max-width:68ch;
+    font-size:1.05rem;
+    color:#3a3527;
+  }
+
+  /* EXPERIENCE - timeline since it's chronological */
+  .timeline-item{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:32px;
+    padding:24px 0;
+    border-top:1px solid var(--line);
+  }
+  .timeline-item:first-child{border-top:none;}
+  @media(max-width:700px){ .timeline-item{grid-template-columns:1fr; gap:6px;} }
+  .tl-date{
+    color:var(--accent);
+    font-weight:600;
+    font-size:0.92rem;
+  }
+  .tl-role{
+    font-size:1.15rem;
+    font-weight:600;
+    margin-bottom:4px;
+  }
+  .tl-org{
+    color:var(--muted);
+    margin-bottom:14px;
+    font-size:0.95rem;
+  }
+  .tl-list{
+    margin:0;
+    padding-left:18px;
+    color:#3a3527;
+  }
+  .tl-list li{margin-bottom:8px;}
+
+  /* PROJECT — case study treatment */
+  .project-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:36px;
+  }
+  .project-title{
+    font-size:1.4rem;
+    font-weight:700;
+    margin-bottom:10px;
+  }
+  .project-summary{
+    color:#3a3527;
+    max-width:64ch;
+    margin-bottom:24px;
+  }
+  .project-meta{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+    margin-bottom:24px;
+  }
+  @media(max-width:700px){ .project-meta{grid-template-columns:1fr;} }
+  .project-meta h4{
+    font-size:0.78rem;
+    text-transform:none;
+    color:var(--accent);
+    font-weight:600;
+    margin-bottom:8px;
+  }
+  .project-meta p{
+    margin:0;
+    color:var(--muted);
+    font-size:0.92rem;
+  }
+  .tool-tags{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .tool-tag{
+    border:1px solid var(--line);
+    padding:6px 12px;
+    border-radius:100px;
+    font-size:0.85rem;
+    color:#3a3527;
+  }
+
+  /* SKILLS */
+  .skill-groups{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:28px;
+  }
+  @media(max-width:700px){ .skill-groups{grid-template-columns:1fr;} }
+  .skill-group h3{
+    font-size:1rem;
+    font-weight:600;
+    margin-bottom:14px;
+    color:var(--accent-2);
+  }
+  .skill-group ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+  }
+  .skill-group li{
+    padding:8px 0;
+    border-top:1px solid var(--line);
+    color:#3a3527;
+    font-size:0.95rem;
+  }
+  .skill-group li:first-child{border-top:none;}
+
+  /* EDUCATION */
+  .edu-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .edu-degree{font-size:1.15rem; font-weight:600;}
+  .edu-field{color:var(--muted);}
+
+  /* FOOTER */
+  footer{
+    padding:48px 0 64px;
+    text-align:center;
+    color:var(--muted);
+    font-size:0.9rem;
+  }
+  footer a{
+    color:var(--accent);
+    text-decoration:none;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="kicker">Portfolio — 2026</div>
+      <h1 class="name">Janasri S</h1>
+      <p class="role">AI &amp; Data Science Graduate — building toward Salesforce, Data Analytics &amp; IT Support</p>
+    </div>
+    <div class="hero-side">
+      <p>Fresh graduate with hands-on Salesforce admin experience and a project portfolio in applied machine learning. Open to roles in Salesforce administration, data analytics, and IT support.</p>
+      <ul class="contact-list">
+        <li>📧 <a href="mailto:spjana55@gmail.com">spjana55@gmail.com</a></li>
+        <li>📱 <a href="tel:+916382246939">+91 63822 46939</a></li>
+        <li>🔗 <a href="https://www.linkedin.com/in/JanaSri" target="_blank" rel="noopener">linkedin.com/in/JanaSri</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap section-head">
+    <h2>About</h2>
+    <div class="section-lede about-body">
+      <p>I'm a B.Tech student specializing in Artificial Intelligence and Data Science, with a growing interest in Salesforce administration, data analytics, and IT support. I have a working foundation in Python, data analysis, and core technical concepts, and I'm actively sharpening these skills through coursework and independent projects.</p>
+      <p>As a fresher, what I bring is adaptability, a genuine willingness to learn, and steady follow-through — qualities I've relied on while picking up Salesforce administration on the job and while building my own machine learning projects from scratch. I'm looking to grow into a long-term career in IT, and I learn fastest when I'm building something real.</p>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Experience</h2>
+      <p class="section-lede">Practical, on-the-job exposure to Salesforce administration.</p>
+    </div>
+
+    <div class="timeline-item">
+      <div class="tl-date">Aug 2025 — Sep 2026</div>
+      <div>
+        <div class="tl-role">Salesforce Administrator</div>
+        <div class="tl-org">Kurinji Technologies Private Limited</div>
+        <ul class="tl-list">
+          <li>Managed day-to-day Salesforce administration, including user setup, permissions, and routine data maintenance.</li>
+          <li>Supported configuration of objects, fields, and workflows to match internal reporting needs.</li>
+          <li>Worked directly with a live CRM environment, building practical fluency in Salesforce's data model and admin console beyond coursework.</li>
+          <li>Collaborated with the wider team to troubleshoot access and data issues, strengthening communication and problem-solving under real deadlines.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Featured Project</h2>
+      <p class="section-lede">Applied computer vision and machine learning, built independently.</p>
+    </div>
+
+    <div class="project-card">
+      <div class="project-title">Virtual Mouse for Physically Challenged Users</div>
+      <p class="project-summary">A hands-free, camera-based mouse that lets users with limited physical mobility control a cursor using tracked hand and eye movement — no physical input device required. Built end-to-end, from real-time video capture through gesture classification to cursor control.</p>
+
+      <div class="project-meta">
+        <div>
+          <h4>Problem</h4>
+          <p>Standard mice and trackpads assume a level of fine motor control that isn't accessible to everyone. This project explores webcam-based gesture tracking as a low-cost, hardware-free alternative.</p>
+        </div>
+        <div>
+          <h4>Approach</h4>
+          <p>Used MediaPipe for real-time hand landmark detection, OpenCV for video processing, and trained a CNN alongside an SVM classifier to recognize distinct gestures and map them to mouse actions.</p>
+        </div>
+        <div>
+          <h4>Outcome</h4>
+          <p>A working prototype that translates webcam-tracked hand movement into functional cursor control and clicks, demonstrating accessible, camera-only human-computer interaction.</p>
+        </div>
+      </div>
+
+      <div class="tool-tags">
+        <span class="tool-tag">Python</span>
+        <span class="tool-tag">OpenCV</span>
+        <span class="tool-tag">MediaPipe</span>
+        <span class="tool-tag">CNN</span>
+        <span class="tool-tag">SVM</span>
+        <span class="tool-tag">Webcam / Real-time video</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Skills</h2>
+      <p class="section-lede">Technical foundation from coursework and projects, plus practical Salesforce experience.</p>
+    </div>
+
+    <div class="skill-groups">
+      <div class="skill-group">
+        <h3>Technical</h3>
+        <ul>
+          <li>Python</li>
+          <li>Data Analytics</li>
+          <li>Machine Learning fundamentals</li>
+          <li>Computer Vision (OpenCV, MediaPipe)</li>
+          <li>SQL basics</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Salesforce &amp; IT</h3>
+        <ul>
+          <li>Salesforce Administration</li>
+          <li>User &amp; permissions management</li>
+          <li>Objects, fields &amp; workflows</li>
+          <li>IT support fundamentals</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Professional</h3>
+        <ul>
+          <li>Good communication</li>
+          <li>Adaptability</li>
+          <li>Willingness to learn</li>
+          <li>Problem-solving</li>
+          <li>Team collaboration</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Education</h2>
+      <p class="section-lede">&nbsp;</p>
+    </div>
+    <div class="edu-item">
+      <div class="edu-degree">B.Tech, Artificial Intelligence &amp; Data Science</div>
+      <div class="edu-field">Undergraduate program</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Janasri S — reach out at <a href="mailto:spjana55@gmail.com">spjana55@gmail.com</a> or <a href="https://www.linkedin.com/in/JanaSri" target="_blank" rel="noopener">LinkedIn</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
